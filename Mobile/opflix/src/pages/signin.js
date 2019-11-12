@@ -1,12 +1,7 @@
 import React, {Component} from 'react';
+import {Text, View, TextInput, TouchableOpacity, AsyncStorage, StyleSheet, Image} from 'react-native';
 
-import {
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity,
-  AsyncStorage,
-} from 'react-native';
+import Logo from '../assets/img/logo.png'
 
 class SignIn extends Component {
   static navigationOptions = {
@@ -49,7 +44,12 @@ class SignIn extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.background}>
+      <View style={styles.inputBackground}>
+      <Image source={Logo} style={{ width: 200 , height: 200}}>
+      <View></View>
+      </Image>
+
         <TextInput
           placeholder="email"
           onChangeText={email => this.setState({email})}
@@ -64,8 +64,20 @@ class SignIn extends Component {
           <Text>Login</Text>
         </TouchableOpacity>
       </View>
+      </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  
+  background: {
+    backgroundColor: '#000',
+    flex: 1,
+  },
+  inputBackground: {
+    backgroundColor: '#fff',
+  }
+  });
 
 export default SignIn;
