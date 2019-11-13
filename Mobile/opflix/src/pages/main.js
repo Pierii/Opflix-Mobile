@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, AsyncStorage, ImageBackground} from 'react-native';
+import { Text, View, StyleSheet, AsyncStorage, ImageBackground } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { Image } from '../assets/img/banner.png'
 class Main extends Component {
@@ -34,7 +34,7 @@ class Main extends Component {
       <View>
 
         <View>
-          <ImageBackground source={Image} style={{ width: 200 , height: 200}}>
+          <ImageBackground source={Image} style={{ width: 200, height: 200 }}>
             <View>
             </View>
           </ImageBackground>

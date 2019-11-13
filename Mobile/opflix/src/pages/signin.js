@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Text, View, TextInput, TouchableOpacity, AsyncStorage, StyleSheet, Image} from 'react-native';
+import React, { Component } from 'react';
+import { Text, View, TextInput, TouchableOpacity, AsyncStorage, StyleSheet, ImageBackground } from 'react-native';
 
 import Logo from '../assets/img/logo.png'
 
@@ -7,12 +7,11 @@ class SignIn extends Component {
   static navigationOptions = {
     header: null,
   };
-
   constructor() {
     super();
     this.state = {
-        email: 'erik@email.com',
-        senha: '123456',
+      email: 'erik@email.com',
+      senha: '123456',
     };
   }
 
@@ -38,46 +37,63 @@ class SignIn extends Component {
       try {
         await AsyncStorage.setItem('@opflix:token', tokenRecebido);
         this.props.navigation.navigate('MainNavigator');
-      } catch (error) {}
+      } catch (error) { }
     }
   };
 
   render() {
     return (
       <View style={styles.background}>
-      <View style={styles.inputBackground}>
-      <Image source={Logo} style={{ width: 200 , height: 200}}>
-      <View></View>
-      </Image>
+        <View style={styles.inputBackground}>
+        <ImageBackground source={Logo} style={styles.logo}>
+            <View>
+            </View>
+          </ImageBackground>
 
-        <TextInput
-          placeholder="email"
-          onChangeText={email => this.setState({email})}
-          value={this.state.email}
-        />
-        <TextInput
-          placeholder="senha"
-          onChangeText={senha => this.setState({senha})}
-          value={this.state.senha}
-        />
-        <TouchableOpacity onPress={this._realizarLogin}>
-          <Text>Login</Text>
-        </TouchableOpacity>
-      </View>
+          <TextInput
+            style={styles.input}
+            placeholder="Endereço de Email"
+            placeholderTextColor="#fff" 
+            onChangeText={email => this.setState({ email })}
+            value={this.state.email}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Senha"
+            placeholderTextColor="#fff" 
+            onChangeText={senha => this.setState({ senha })}
+            value={this.state.senha}
+          />
+          <TouchableOpacity onPress={this._realizarLogin}>
+            <Text>Fazer Login</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  
+
   background: {
     backgroundColor: '#000',
     flex: 1,
   },
   inputBackground: {
     backgroundColor: '#fff',
-  }
-  });
+    margin: 50,
+    alignItems: 'center',
+  },
+  input: {
+    backgroundColor: '#3D36B9',
+    color: '#fff',
+    width: 250,
+    borderRadius: 5,
+    borderWidth: 1,
+  },
+  logo:{
+    width: 300,
+    height: 100 ,
+  }});
 
 export default SignIn;
