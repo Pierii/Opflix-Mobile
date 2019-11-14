@@ -64,8 +64,8 @@ class SignIn extends Component {
             onChangeText={senha => this.setState({ senha })}
             value={this.state.senha}
           />
-          <TouchableOpacity onPress={this._realizarLogin}>
-            <Text>Fazer Login</Text>
+          <TouchableOpacity onPress={this._realizarLogin} style={styles.btnLogin}>
+            <Text style={styles.textBtn}>Fazer Login</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -81,7 +81,10 @@ const styles = StyleSheet.create({
   },
   inputBackground: {
     backgroundColor: '#fff',
-    margin: 50,
+    marginTop: 150,
+    margin: 35,
+    paddingTop: 40,
+    paddingBottom: 100,
     alignItems: 'center',
   },
   input: {
@@ -90,10 +93,24 @@ const styles = StyleSheet.create({
     width: 250,
     borderRadius: 5,
     borderWidth: 1,
+    fontSize: 20,
   },
   logo:{
     width: 300,
-    height: 100 ,
-  }});
+    height: 110,
+    marginTop: 10,
+    marginBottom:40,
+  },
+  btnLogin: {
+    backgroundColor: '#3D36B9',
+    color: '#fff',
+    width: 250,
+    borderRadius: 5,
+    borderWidth: 1,  
+  },
+  textBtn: {
+    fontSize: 40,
+  }
+});
 
 export default SignIn;
