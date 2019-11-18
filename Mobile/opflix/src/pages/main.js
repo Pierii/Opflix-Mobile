@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, AsyncStorage, ImageBackground } from 'react-native';
+import { Text, View, StyleSheet, AsyncStorage} from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
+
 import { Image } from '../assets/img/banner.png'
 class Main extends Component {
 
@@ -31,20 +32,12 @@ class Main extends Component {
 
   render() {
     return (
-      <View>
-
-        <View>
-          <ImageBackground source={Image} style={{ width: 200, height: 200 }}>
-            <View>
-            </View>
-          </ImageBackground>
-        </View>
+      <View> 
         <FlatList
           data={this.state.lancamentos}
           keyExtractor={item => item.idLancamento}
           renderItem={({ item }) => (
             <View>
-              <Text>{item.idLancamento}</Text>
               <Text>{item.titulo}</Text>
               <Text>{item.idCategoriaNavigation.categoria}</Text>
               <Text>{item.sinopse}</Text>

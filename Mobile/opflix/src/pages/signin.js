@@ -90,10 +90,12 @@ const styles = StyleSheet.create({
   input: {
     backgroundColor: '#3D36B9',
     color: '#fff',
-    width: 250,
+    width: 300,
+    height: 45 ,
     borderRadius: 5,
     borderWidth: 1,
     fontSize: 20,
+    marginBottom: 10,
   },
   logo:{
     width: 300,
@@ -102,14 +104,16 @@ const styles = StyleSheet.create({
     marginBottom:40,
   },
   btnLogin: {
-    backgroundColor: '#3D36B9',
-    color: '#fff',
+    backgroundColor: '#000',
     width: 250,
     borderRadius: 5,
     borderWidth: 1,  
+    borderColor: '#3D36B9'
   },
   textBtn: {
     fontSize: 40,
+    color: '#fff',
+    textAlign: 'center',
   }
 });
 
