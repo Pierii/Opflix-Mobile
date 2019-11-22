@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, AsyncStorage} from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 
-import { Image } from '../assets/img/banner.png'
 class Main extends Component {
 
   constructor() {
@@ -37,14 +36,16 @@ class Main extends Component {
           data={this.state.lancamentos}
           keyExtractor={item => item.idLancamento}
           renderItem={({ item }) => (
-            <View>
-              <Text>{item.titulo}</Text>
-              <Text>{item.idCategoriaNavigation.categoria}</Text>
-              <Text>{item.sinopse}</Text>
-              <Text>{item.tempoDuracao}</Text>
-              <Text>{item.dataLancamento}</Text>
-              <Text>{item.idFormatoNavigation.formato}</Text>
-              <Text>{item.idVeiculosNavigation.veiculo}</Text>
+            <View style={styles.background}>
+              <View style={styles.item}>
+              <Text style={styles.titulo}>{item.titulo}</Text>
+              <Text style={styles.text}>Categoria: {item.idCategoriaNavigation.categoria}</Text>
+              <Text style={styles.text}>{item.sinopse}</Text>
+              <Text style={styles.text}>Duração: {item.tempoDuracao}</Text>
+              <Text style={styles.text}>Release: {item.dataLancamento}</Text>
+              <Text style={styles.text}>Plataforma: {item.idFormatoNavigation.formato}</Text>
+              <Text style={styles.text}>Veiculo: {item.idVeiculosNavigation.veiculo}</Text>
+              </View>
             </View>
           )}
         />
@@ -52,5 +53,24 @@ class Main extends Component {
     );
   }
 }
+const styles = StyleSheet.create({
+  background: {
+    backgroundColor: '#000',
+  },
+  titulo:{
+    color: '#fff',
+    fontSize: 25,
+    textAlign: 'center',
+    borderWidth: 1,
+    borderColor: '#3D36B9'
+  },
+  text: {
+    backgroundColor: '#fff',
+  },
+  item: {
+    backgroundColor: '#3D36B9',
+    margin: 20,
+  }
+});
 
 export default Main;
