@@ -16,12 +16,23 @@ const MainNavigator = createBottomTabNavigator(
     Main: {
       screen: MainScreen,
     },
-    Filter: {
-      screen: FilterScreen,
-    }
-  }
+      Filtros: {
+        screen: FilterScreen
+      },
+  },
+  {
+    tabBarOptions: {
+      showIcon: true,
+      showLabel: false,
+      inactiveBackgroundColor: '#3D36B9',
+      activeBackgroundColor: '#2C2787',
+      style: {
+        width: '100%',
+        height: 50,
+      },
+    },
+  },
 );
-
 export default createAppContainer(
   createSwitchNavigator(
     {
@@ -30,6 +41,8 @@ export default createAppContainer(
     },
     {
       initialRouteName: 'AuthStack',
+      
     },
   ),
 );
+

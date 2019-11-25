@@ -46,42 +46,48 @@ class Categorias extends Component {
 
     render() {
         return (
-
-            <View>
-                <Text>Filtrar lançamentos por categoria</Text>
-                <Picker selectedValue={this.state.categoriaEscolhida} onValueChange={(itemValue) => this.setState({ categoriaEscolhida: itemValue })}>
-                    <Picker.Item label="Escolha a plataforma:" value="0" selectedValue />
-                    {this.state.categorias.map(e => {
-                        return (<Picker.Item label={e.categoria} value={e.idCategoria} />
-                        )
-                    })}
-                </Picker>
-                <TouchableOpacity onPress={this._carregarLancamentos}>
-                    <Text>Buscar</Text>
-                </TouchableOpacity>
-                <FlatList
-                    data={this.state.lancamentos}
-                    keyExtractor={item => item.idLancamento}
-                    renderItem={({ item }) => (
-                        <View style={styles.background}>
-                            <View style={styles.item}>
-                                <Text style={styles.titulo}>{item.titulo}</Text>
-                                <Text style={styles.text}>Categoria: {item.idCategoriaNavigation.categoria}</Text>
-                                <Text style={styles.text}>{item.sinopse}</Text>
-                                <Text style={styles.text}>Duração: {item.tempoDuracao}</Text>
-                                <Text style={styles.text}>Release: {item.dataLancamento}</Text>
-                                <Text style={styles.text}>Plataforma: {item.idFormatoNavigation.formato}</Text>
-                                <Text style={styles.text}>Veiculo: {item.idVeiculosNavigation.veiculo}</Text>
+            <View style={styles.backGeral}>
+                <View>
+                    <Text style={styles.textTitulo}>Filtrar por categoria</Text>
+                    <Picker style={styles.textTitulo} selectedValue={this.state.categoriaEscolhida} onValueChange={(itemValue) => this.setState({ categoriaEscolhida: itemValue })}>
+                        <Picker.Item  label="Escolha a categoria:" value="0" selectedValue />
+                        {this.state.categorias.map(e => {
+                            return (<Picker.Item label={e.categoria} value={e.idCategoria} />
+                            )
+                        })}
+                    </Picker>
+                    <TouchableOpacity onPress={this._carregarLancamentos}>
+                        <Text style={styles.btn} >Buscar</Text>
+                    </TouchableOpacity>
+                    <FlatList
+                        data={this.state.lancamentos}
+                        keyExtractor={item => item.idLancamento}
+                        renderItem={({ item }) => (
+                            <View style={styles.background}>
+                                <View style={styles.item}>
+                                    <Text style={styles.titulo}>{item.titulo}</Text>
+                                    <Text style={styles.text}>Categoria: {item.idCategoriaNavigation.categoria}</Text>
+                                    <Text style={styles.text}>{item.sinopse}</Text>
+                                    <Text style={styles.text}>Duração: {item.tempoDuracao}</Text>
+                                    <Text style={styles.text}>Release: {item.dataLancamento}</Text>
+                                    <Text style={styles.text}>Plataforma: {item.idFormatoNavigation.formato}</Text>
+                                    <Text style={styles.text}>Veiculo: {item.idVeiculosNavigation.veiculo}</Text>
+                                </View>
                             </View>
-                        </View>
-                    )}
-                />
+                        )}
+                    />
+                </View>
             </View>
         )
     }
 }
 
 const styles = StyleSheet.create({
+    backGeral: {
+        backgroundColor: '#000',
+        display: 'flex',
+        flex: 1,
+    },
     background: {
         backgroundColor: '#000',
     },
@@ -94,10 +100,30 @@ const styles = StyleSheet.create({
     },
     text: {
         backgroundColor: '#fff',
+        borderWidth: 1,
+        borderColor: '#000',
+        margin: 2,
+        fontSize: 17,
     },
     item: {
         backgroundColor: '#3D36B9',
         margin: 20,
+    },
+    textTitulo: {
+        fontSize: 40,
+        textAlign: 'center',
+        color: '#fff',
+        backgroundColor: '#3D36B9',
+
+    },
+    btn: {
+        backgroundColor: '#fff',
+        color: '#000',
+        textAlign: 'center',
+        fontSize: 20,
+        borderTopWidth: 4,
+        borderColor: '#000', 
+   
     }
 });
 

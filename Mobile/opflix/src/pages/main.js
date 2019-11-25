@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, AsyncStorage} from 'react-native';
+import { Text, View, StyleSheet, AsyncStorage, Image } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 
 class Main extends Component {
@@ -10,10 +10,20 @@ class Main extends Component {
       lancamentos: [],
     };
   }
+  static navigationOptions = {
+    tabBarIcon: () => (
+      <Image
+        source={require('../assets/img/homeIcon.png')}
+        style={styles.icon}
+      />
+    )
+  }
+
 
   componentDidMount() {
     this._carregarLancamentos();
   }
+
 
   _carregarLancamentos = async () => {
 
@@ -31,20 +41,20 @@ class Main extends Component {
 
   render() {
     return (
-      <View> 
+      <View>
         <FlatList
           data={this.state.lancamentos}
           keyExtractor={item => item.idLancamento}
           renderItem={({ item }) => (
             <View style={styles.background}>
               <View style={styles.item}>
-              <Text style={styles.titulo}>{item.titulo}</Text>
-              <Text style={styles.text}>Categoria: {item.idCategoriaNavigation.categoria}</Text>
-              <Text style={styles.text}>{item.sinopse}</Text>
-              <Text style={styles.text}>Duração: {item.tempoDuracao}</Text>
-              <Text style={styles.text}>Release: {item.dataLancamento}</Text>
-              <Text style={styles.text}>Plataforma: {item.idFormatoNavigation.formato}</Text>
-              <Text style={styles.text}>Veiculo: {item.idVeiculosNavigation.veiculo}</Text>
+                <Text style={styles.titulo}>{item.titulo}</Text>
+                <Text style={styles.text}>Categoria: {item.idCategoriaNavigation.categoria}</Text>
+                <Text style={styles.text}>{item.sinopse}</Text>
+                <Text style={styles.text}>Duração: {item.tempoDuracao}</Text>
+                <Text style={styles.text}>Release: {item.dataLancamento}</Text>
+                <Text style={styles.text}>Plataforma: {item.idFormatoNavigation.formato}</Text>
+                <Text style={styles.text}>Veiculo: {item.idVeiculosNavigation.veiculo}</Text>
               </View>
             </View>
           )}
@@ -57,7 +67,7 @@ const styles = StyleSheet.create({
   background: {
     backgroundColor: '#000',
   },
-  titulo:{
+  titulo: {
     color: '#fff',
     fontSize: 25,
     textAlign: 'center',
@@ -66,10 +76,19 @@ const styles = StyleSheet.create({
   },
   text: {
     backgroundColor: '#fff',
+    borderWidth: 1,
+    borderColor: '#000',
+    margin: 2,
+    fontSize: 17,
   },
   item: {
     backgroundColor: '#3D36B9',
     margin: 20,
+  },
+  icon: {
+    width: 35,
+    height: 35,
+    tintColor: 'black'
   }
 });
 
