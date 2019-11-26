@@ -5,6 +5,8 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import MainScreen from './pages/main';
 import SignInScreen from './pages/signin';
 import FilterScreen from './pages/filters';
+import DataFilterScreen from './pages/dataFilter';
+import LogoutScreen from './pages/logout';
 
 
 const AuthStack = createStackNavigator({
@@ -18,6 +20,12 @@ const MainNavigator = createBottomTabNavigator(
     },
       Filtros: {
         screen: FilterScreen
+      },
+      DataFilter: {
+        screen: DataFilterScreen
+      },
+      Logout: {
+        screen: LogoutScreen
       },
   },
   {

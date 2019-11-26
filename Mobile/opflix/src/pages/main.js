@@ -50,7 +50,7 @@ class Main extends Component {
               <View style={styles.item}>
                 <Text style={styles.titulo}>{item.titulo}</Text>
                 <Text style={styles.text}>Categoria: {item.idCategoriaNavigation.categoria}</Text>
-                <Text style={styles.text}>{item.sinopse}</Text>
+                <Text style={styles.text}>Sinopse: {item.sinopse}</Text>
                 <Text style={styles.text}>Duração: {item.tempoDuracao}</Text>
                 <Text style={styles.text}>Release: {item.dataLancamento}</Text>
                 <Text style={styles.text}>Plataforma: {item.idFormatoNavigation.formato}</Text>
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   icon: {
     width: 35,
     height: 35,
-    tintColor: 'black'
+    tintColor: 'white'
   }
 });
 

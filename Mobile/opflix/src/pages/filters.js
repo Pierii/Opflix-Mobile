@@ -1,6 +1,6 @@
 
-import React, { Component, Fragment } from 'react';
-import { Text, View, AsyncStorage, Picker, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { Component } from 'react';
+import { Text, View, AsyncStorage, Picker, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 
 class Categorias extends Component {
@@ -10,9 +10,18 @@ class Categorias extends Component {
             lancamentos: [
             ],
             categoriaEscolhida: null,
-            categorias: []
+            categorias: []  
         }
     }
+    
+    static navigationOptions = {
+        tabBarIcon: () => (
+          <Image
+            source={require('../assets/img/filterIcon.png')}
+            style={styles.icon}
+          />
+        )
+      }
 
     componentDidMount() {
         this._carregarLancamentos();
@@ -67,11 +76,11 @@ class Categorias extends Component {
                                 <View style={styles.item}>
                                     <Text style={styles.titulo}>{item.titulo}</Text>
                                     <Text style={styles.text}>Categoria: {item.idCategoriaNavigation.categoria}</Text>
-                                    <Text style={styles.text}>{item.sinopse}</Text>
+                                    <Text style={styles.text}>Sinopse: {item.sinopse}</Text>
                                     <Text style={styles.text}>Duração: {item.tempoDuracao}</Text>
                                     <Text style={styles.text}>Release: {item.dataLancamento}</Text>
                                     <Text style={styles.text}>Plataforma: {item.idFormatoNavigation.formato}</Text>
-                                    <Text style={styles.text}>Veiculo: {item.idVeiculosNavigation.veiculo}</Text>
+                                    <Text style={styles.text}>Veículo: {item.idVeiculosNavigation.veiculo}</Text>
                                 </View>
                             </View>
                         )}
@@ -123,8 +132,12 @@ const styles = StyleSheet.create({
         fontSize: 20,
         borderTopWidth: 4,
         borderColor: '#000', 
-   
-    }
+    },
+    icon: {
+        width: 45,
+        height: 45,
+        tintColor: 'white'
+      }
 });
 
 export default Categorias
